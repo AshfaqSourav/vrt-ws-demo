@@ -50,7 +50,7 @@ Make sure you have the following installed:
 After cloning the repo:
 
 ```bash
-git clone https://github.com/AshfaqSourav/playwright-visual-regression.git
+git clone https://github.com/AshfaqSourav/vrt-ws-demo.git
 cd playwright-visual-regression
 
 ```Install dependencies
