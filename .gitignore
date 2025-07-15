@@ -43,3 +43,6 @@ Thumbs.db
 # Editor backup
 *.swp
 .env
+
+# Playwright
+/blob-report/
