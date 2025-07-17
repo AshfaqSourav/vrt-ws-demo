@@ -1,18 +1,22 @@
+import { link } from "fs";
+
 export const FooterStyles = {
   Hero: {
-    title: {
-      Desktop: {
+    link: {
+      /*Desktop: {
         fontSize: '84px',
         fontWeight: '500',
         color: 'rgb(255, 255, 255)',
         lineHeight: '72px',
-      },
+      },*/
       Laptop: {
-        fontSize: '67px',
-        fontWeight: '500',
+        fontSize: '16px',
+        fontWeight: '400',
         color: 'rgb(255, 255, 255)',
-        lineHeight: '60px',
-      },
+        //lineHeight: '24px',
+        fontFamily: 'Sharp Grotesk Book'
+      }
+      /*,
       Tablet: {
         fontSize: '36px',
         fontWeight: '500',
@@ -81,7 +85,7 @@ export const FooterStyles = {
       },
       Mobile: {
         color: 'rgb(255, 204, 0)',
-      }
+      }*/
     }
   }
 };

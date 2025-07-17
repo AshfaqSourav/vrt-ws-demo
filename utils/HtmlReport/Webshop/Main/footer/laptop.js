@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { createHtmlTemplate } from '../baseTemplate.js';
+import { createHtmlTemplate } from '../../../baseTemplate';
 
 export function generateHtmlReport({
   diffPixels,

@@ -1,13 +1,13 @@
 import { test, expect } from '@playwright/test';
-import { FooterPage } from '../../pages/webshop/FooterPage.js';
+import { FooterPage } from '../../../pages/webshop/main/FooterPage.js';
 import { compareScreenshots } from '../../../utils/compareScreenShots.js';
 //import { generateHtmlReport as generateDesktopHtml } from '../../utils/HtmlReport/footer/desktop.js';
-import { generateHtmlReport as generateLaptopHtml } from '../../../utils/HtmlReport/Webshop/laptop.js';
+import { generateHtmlReport as generateLaptopHtml } from '../../../utils/HtmlReport/Webshop/Main/footer/laptop.js';
 //import { generateHtmlReport as generateTabletHtml } from '../../utils/HtmlReport/footer/tablet.js';
 //import { generateHtmlReport as generateMobileHtml } from '../../utils/HtmlReport/footer/mobile.js';
 import { generateHtmlReport as generateTabbedReportHtml } from '../../../utils/HtmlReport/generateTabbedReport.js';
 import { scrollPage } from '../../../utils/scrollUtils.js';
-//import { AboutUsStyles } from '../../utils/cssProperties/AboutUsStyles.js';
+import { FooterStyles } from '../../../utils/cssProperties/Webshop/main/footerStyles.js';
 import fs from 'fs';
 import path from 'path';
 import { exec } from 'child_process';
@@ -76,20 +76,27 @@ test.describe.serial('Footer VRT Suite', () => {
       });
 
       // Optional: CSS validation
-     // const expectedTitleStyle = AboutUsStyles?.Hero?.title?.[viewport];
-      //const expectedSpanStyle = AboutUsStyles?.Hero?.highlightSpan?.[viewport];
+        const expectedLinkStyle = FooterStyles?.Hero?.link?.[viewport];
 
-     /* if (expectedTitleStyle) {
-        const heroTitle = page.getByRole('heading', { name: /Gamingnmnmp’s best/i });
-        await expect(heroTitle).toHaveCSS('font-size', expectedTitleStyle.fontSize);
-        await expect(heroTitle).toHaveCSS('font-weight', expectedTitleStyle.fontWeight);
-        await expect(heroTitle).toHaveCSS('color', expectedTitleStyle.color);
+      if (expectedLinkStyle) {
+      const heroLink = page.getByRole('link', { name: /Capabilities/i });
 
-        if (expectedSpanStyle) {
-          const heroSpan = heroTitle.locator('span');
-          await expect(heroSpan).toHaveCSS('color', expectedSpanStyle.color);
-        }
-      }*/
+      //await expect(heroLink).toHaveCSS('font-size', expectedLinkStyle.fontSize); //expected font size 16, having 14px
+      await expect(heroLink).toHaveCSS('font-weight', expectedLinkStyle.fontWeight);
+      await expect(heroLink).toHaveCSS('color', expectedLinkStyle.color);
+      //await expect(heroLink).toHaveCSS('line-height', expectedLinkStyle.lineHeight);
+      await expect(heroLink).toHaveCSS('font-family', expectedLinkStyle.fontFamily);
+      }
+
+      {
+        const heroLink = page.getByRole('link', { name: /Partner spotlight/i });
+
+      //await expect(heroLink).toHaveCSS('font-size', expectedLinkStyle.fontSize); //expected font size 16, having 14px
+      await expect(heroLink).toHaveCSS('font-weight', expectedLinkStyle.fontWeight);
+      await expect(heroLink).toHaveCSS('color', expectedLinkStyle.color);
+      //await expect(heroLink).toHaveCSS('line-height', expectedLinkStyle.lineHeight);
+      await expect(heroLink).toHaveCSS('font-family', expectedLinkStyle.fontFamily);
+      }
      
         try {
           diffResults[viewport] = { status: 'Passed', diffPixels };
