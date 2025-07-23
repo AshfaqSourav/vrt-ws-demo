@@ -1,16 +1,16 @@
-// /utils/HtmlReport/aboutXsolla/aboutUs/tablet.js
+// /utils/HtmlReport/Webshop/Main/main/tablet.js
 
 import fs from 'fs';
-import { createHtmlTemplate } from '../baseTemplate.js';
+import { createHtmlTemplate } from '../../../baseTemplate.js';
 
 export function generateHtmlReport({
   diffPixels,
   outputDir,
   reportPath,
-  expectedImage = 'aboutUsTablet-expected.png',
-  actualImage = 'aboutUsTablet-actual.png',
-  diffImage = 'aboutUsTablet-diff.png',
-  pageName = 'About Us Tablet'
+  expectedImage = 'mainTablet-expected.png',
+  actualImage = 'mainTablet-actual.png',
+  diffImage = 'mainTablet-diff.png',
+  pageName = 'Main Tablet'
 }) {
   const html = createHtmlTemplate({
     pageName,

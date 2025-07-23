@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
-import { MainPage } from '../../../pages/webshop/main/MainPage.js';
+import { StorefrontPage } from '../../../pages/webshop/capabilities/StorefrontPage.js';
 import { compareScreenshots } from '../../../utils/compareScreenShots.js';
-import { generateHtmlReport as generateDesktopHtml } from '../../../utils/HtmlReport/Webshop/Main/main/desktop.js';
-import { generateHtmlReport as generateLaptopHtml } from '../../../utils/HtmlReport/Webshop/Main/main/laptop.js';
-import { generateHtmlReport as generateTabletHtml } from '../../../utils/HtmlReport/Webshop/Main/main/tablet.js';
-import { generateHtmlReport as generateMobileHtml } from '../../../utils/HtmlReport/Webshop/Main/main/mobile.js';
+import { generateHtmlReport as generateDesktopHtml } from '../../../utils/HtmlReport/Webshop/Capabilities/storefront/desktop.js';
+import { generateHtmlReport as generateLaptopHtml } from '../../../utils/HtmlReport/Webshop/Capabilities/storefront/laptop.js';
+import { generateHtmlReport as generateTabletHtml } from '../../../utils/HtmlReport/Webshop/Capabilities/storefront/tablet.js';
+import { generateHtmlReport as generateMobileHtml } from '../../../utils/HtmlReport/Webshop/Capabilities/storefront/mobile.js';
 import { generateHtmlReport as generateTabbedReportHtml } from '../../../utils/HtmlReport/generateTabbedReport.js';
 import { scrollPage } from '../../../utils/scrollUtils.js';
 // import { AboutUsStyles } from '../../utils/cssProperties/AboutUsStyles.js';
@@ -26,44 +26,43 @@ const diffResults = {
 const viewports = [
   {
     name: 'Desktop',
-    expectedPath: './expected_screenshots/main/mainDesktopFigma.png',
+    expectedPath: './expected_screenshots/storefront/storefrontDesktopFigma.png',
     htmlGen: generateDesktopHtml
   },
   {
     name: 'Laptop',
-    expectedPath: './expected_screenshots/main/mainLaptopFigma.png',
+    expectedPath: './expected_screenshots/storefront/storefrontLaptopFigma.png',
     htmlGen: generateLaptopHtml
   },
   {
     name: 'Tablet',
-    expectedPath: './expected_screenshots/main/mainTabletFigma.png',
+    expectedPath: './expected_screenshots/storefront/storefrontTabletFigma.png',
     htmlGen: generateTabletHtml
   },
   {
     name: 'Mobile',
-    expectedPath: './expected_screenshots/main/mainMobileFigma.png',
+    expectedPath: './expected_screenshots/storefront/storefrontMobileFigma.png',
     htmlGen: generateMobileHtml
   }
 ];
 
 // SERIAL BLOCK — Ensures tests run one after another
-test.describe.serial('Main VRT Suite', () => {
+test.describe.serial('Storefront VRT Suite', () => {
   for (const { name: viewport, expectedPath, htmlGen } of viewports) {
-    test(`${viewport} - Main visual should match Figma`, async ({ page }) => {
-      const main = new MainPage(page, viewport);
-      await main.goto();
+    test(`${viewport} - Storefront visual should match Figma`, async ({ page }) => {
+      const storefront = new StorefrontPage(page, viewport);
+      await storefront.goto();
       await scrollPage(page);
 
-      const { cropped } = await main.takeScreenshot();
+      const { cropped } = await storefront.takeScreenshot();
       const actualBuffer = fs.readFileSync(cropped);
-      // const actualBuffer = await main.takeScreenshot();
 
       const diffPixels = compareScreenshots({
         actualBuffer,
         expectedPath,
-        actualPath: `${diffDir}/main${viewport}-actual.png`,
-        diffPath: `${diffDir}/main${viewport}-diff.png`,
-        expectedCopyPath: `${diffDir}/main${viewport}-expected.png`
+        actualPath: `${diffDir}/storefront${viewport}-actual.png`,
+        diffPath: `${diffDir}/storefront${viewport}-diff.png`,
+        expectedCopyPath: `${diffDir}/storefront${viewport}-expected.png`
       });
 
       diffResults[viewport] = diffPixels;
@@ -71,8 +70,8 @@ test.describe.serial('Main VRT Suite', () => {
       htmlGen({
         diffPixels,
         outputDir: diffDir,
-        reportPath: `${diffDir}/main${viewport}-report.html`,
-        pageName: `About Us ${viewport}`
+        reportPath: `${diffDir}/storefront${viewport}-report.html`,
+        pageName: `storefront ${viewport}`
       });
 
         try {
@@ -87,21 +86,21 @@ test.describe.serial('Main VRT Suite', () => {
 
   // AFTER ALL TESTS — Generate tabbed report once
   test.afterAll(async () => {
-    const reportPath = path.resolve('./diff_output/mainMultiViewportReport.html');
+    const reportPath = path.resolve('./diff_output/storefrontMultiViewportReport.html');
     console.log('📊 Generating tabbed multi-viewport report...');
 
     const tabbedData = ['Desktop', 'Laptop', 'Tablet', 'Mobile'].map(name => ({
   name,
   diffPixels: diffResults[name].diffPixels ?? 'Failed',
-  expectedImage: `main${name}-expected.png`,
-  actualImage: `main${name}-actual.png`,
-  diffImage: `main${name}-diff.png`
+  expectedImage: `storefront${name}-expected.png`,
+  actualImage: `storefront${name}-actual.png`,
+  diffImage: `storefront${name}-diff.png`
 }));
 
 generateTabbedReportHtml({
   outputDir: diffDir,
   reportPath,
-  pageName: 'About Us',
+  pageName: 'Storefront',
   viewports: tabbedData
 });
 

@@ -1,15 +1,14 @@
-// /path/to/MainPage.js
+// /path/to/GlobalPage.js
 
 import dotenv from 'dotenv';
-import { getEnabledViewports } from '../../../utils/viewPorts.js';
-import { scrollPage } from '../../../utils/scrollUtils.js';
-import { maskEverythingExcept , cropElement , cropWhiteMargins } from '../../../utils/domUtils.js';
+import { getEnabledViewports } from '../../utils/viewPorts.js';
+import { scrollPage } from '../../utils/scrollUtils.js';
 
 dotenv.config();
 
 const viewportSizes = getEnabledViewports(4); // 👈 Update count or keys as needed
-const selector = 'div[class^="sc-hsRmLE"]';
-export class MainPage {
+
+export class GlobalPage {
   constructor(page, viewport) {
     this.page = page;
     this.viewport = viewport;
@@ -20,7 +19,6 @@ export class MainPage {
       waitUntil: 'networkidle'
     });
     await this.page.waitForTimeout(1000);
-    await this.page.waitForSelector(selector, { timeout: 20000 });
     // await scrollPage(this.page);
   }
 
@@ -41,5 +39,4 @@ async takeScreenshot() {
     cropped: maskedFullPagePath
   };
 }
-
 }
