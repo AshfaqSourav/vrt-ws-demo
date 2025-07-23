@@ -1,16 +1,16 @@
-// /utils/HtmlReport/aboutXsolla/aboutUs/laptop.js
+// /utils/HtmlReport/Webshop/Main/main/laptop.js
 
 import fs from 'fs';
-import { createHtmlTemplate } from '../baseTemplate.js';
+import { createHtmlTemplate } from '../../../baseTemplate.js';
 
 export function generateHtmlReport({
   diffPixels,
   outputDir,
   reportPath,
-  expectedImage = 'aboutUsLaptop-expected.png',
-  actualImage = 'aboutUsLaptop-actual.png',
-  diffImage = 'aboutUsLaptop-diff.png',
-  pageName = 'About Us Laptop'
+  expectedImage = 'mainLaptop-expected.png',
+  actualImage = 'mainLaptop-actual.png',
+  diffImage = 'mainLaptop-diff.png',
+  pageName = 'Main Laptop'
 }) {
   const html = createHtmlTemplate({
     pageName,

@@ -1,4 +1,4 @@
-// /utils/HtmlReport/Webshop/Main/main/mobile.js
+// /utils/HtmlReport/Webshop/mainHero/mainHero/laptop.js
 
 import fs from 'fs';
 import { createHtmlTemplate } from '../../../baseTemplate.js';
@@ -7,10 +7,10 @@ export function generateHtmlReport({
   diffPixels,
   outputDir,
   reportPath,
-  expectedImage = 'mainMobile-expected.png',
-  actualImage = 'mainMobile-actual.png',
-  diffImage = 'mainMobile-diff.png',
-  pageName = 'Main Mobile'
+  expectedImage = 'mainHeroLaptop-expected.png',
+  actualImage = 'mainHeroLaptop-actual.png',
+  diffImage = 'mainHeroLaptop-diff.png',
+  pageName = 'MainHero Laptop'
 }) {
   const html = createHtmlTemplate({
     pageName,
