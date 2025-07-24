@@ -111,7 +111,7 @@ export function compareScreenshots({
     diff.data,
     width,
     height,
-    { threshold: 0.6 }
+    { threshold: 0.3 }
   );
 
   // Write output files
