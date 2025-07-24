@@ -124,7 +124,7 @@ if (expectedSubtitleStyle) {
   await testCssProperty(heroSubtitle, 'font-family', expectedSubtitleStyle.fontFamily, 'heroSubtitle');
   await testCssProperty(heroSubtitle, 'color', expectedSubtitleStyle.color, 'heroSubtitle');
   await testCssProperty(heroSubtitle, 'line-height', expectedSubtitleStyle.lineHeight, 'heroSubtitle');
-  await testCssProperty(heroSubtitle, 'margin-top', expectedSubtitleStyle.lmarginTop, 'heroSubtitle');
+  await testCssProperty(heroSubtitle, 'margin-top', expectedSubtitleStyle.  marginTop, 'heroSubtitle');
 }
 
 // Customize Button
@@ -182,7 +182,7 @@ if (expectedCardStyle) {
 if (expectedCardPadding) {
   const CardPadding = await page.locator('.w-full.overflow-hidden').first();
   await testCssProperty(CardPadding, 'padding-top', expectedCardPadding.paddingTop, 'CardPadding');
-  await testCssProperty(CardPadding, 'padding-bottom', expectedCardPadding.paddingBotton, 'CardPadding');
+  await testCssProperty(CardPadding, 'padding-bottom', expectedCardPadding.paddingBottom, 'CardPadding');
   await testCssProperty(CardPadding, 'row-gap', expectedCardPadding.rowGap, 'CardPadding');
 }
 

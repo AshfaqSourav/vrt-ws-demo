@@ -143,13 +143,13 @@ export const DemoHeroStyles = {
       Laptop: {
         paddingTop: '77px',
         paddingBottom: '120px',
-        rowgap: '60px'
+        rowGap: '60px'
       
       },
       Mobile: {
         paddingTop: '60px',
         paddingBottom: '101px',
-        rowgap: '41px'
+        rowGap: '41px'
       }
     }
   }
