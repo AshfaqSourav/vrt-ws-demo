@@ -4,7 +4,7 @@ const allViewports = {
   Desktop: { width: 1800, height: 1000 },
   Laptop: { width: 1440, height: 1000 },
   Tablet: { width: 768, height: 1000 },
-  Mobile: { width: 360, height: 1000 }
+  Mobile: { width: 375, height: 1000 }
 };
 
 export function getEnabledViewports(countOrKeys) {

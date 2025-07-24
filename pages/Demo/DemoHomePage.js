@@ -23,7 +23,7 @@ export class DemoHomePage {
       waitUntil: 'networkidle'
     });
     await this.page.waitForTimeout(1000);
-    await acceptCookiesIfVisible(this.page);
+    // await acceptCookiesIfVisible(this.page);
     await this.page.waitForSelector(selector, { timeout: 20000 });
     await scrollPage(this.page);
   }

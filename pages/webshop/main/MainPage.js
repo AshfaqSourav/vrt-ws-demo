@@ -8,7 +8,7 @@ import { maskEverythingExcept , cropElement , cropWhiteMargins } from '../../../
 dotenv.config();
 
 const viewportSizes = getEnabledViewports(4); // 👈 Update count or keys as needed
-const selector = 'div[class^="sc-hsRmLE"]';
+const selector = '.sc-hQQqCA.dNoXjt';
 export class MainPage {
   constructor(page, viewport) {
     this.page = page;

@@ -1,16 +1,21 @@
-// /path/to/FooterPage.js
-
 import dotenv from 'dotenv';
 import { getEnabledViewports } from '../../../utils/viewPorts.js';
-import { acceptCookiesIfVisible } from '../../../utils/cookies.js';
 import { maskEverythingExcept ,  cropWhiteMargins } from '../../../utils/domUtils.js';
 
 
 dotenv.config();
 
 const viewportSizes = getEnabledViewports(4); 
-
-const selector = 'div[class^="sc-hvigdm"]'
+// const footer = 'footer';
+// const selector = 'footer > div';
+// const selector = 'div.sc-eNLTQs.bAsGtv'; //form
+// const selector = 'div.sc-kYLqRS.AAgtZ';//success story
+// const selector = '.sc-kNOymR.kfRzAJ.sc-hwkwBN.sc-ixyMIc.ghmPUW.ioUnvb';//library
+// const selector = '.sc-jIDBmd.fQsPgx';//logo garden
+// const selector = '.sc-kIonhn.kdUvAj';//platform
+// const selector = '.sc-fyfgSA.fbqoob';//videoCard
+// const selector = '.sc-kNOymR.kfRzAJ.sc-hwkwBN.sc-fvubMj.ghmPUW.krqPaA';//success guide
+const selector = '.sc-fFmWCW.hilyVA'//calculator
 
 export class FooterPage {
   constructor(page, viewport) {
@@ -23,7 +28,6 @@ export class FooterPage {
       waitUntil: 'networkidle'
     });
     await this.page.waitForTimeout(1000);
-    await acceptCookiesIfVisible(this.page);
     await this.page.waitForSelector(selector, { timeout: 20000 });
 
   }
