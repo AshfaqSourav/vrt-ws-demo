@@ -63,7 +63,7 @@ npx playwright install
 ```Add .env file
 npm install dotenv
 Add a file with .env
-Add FIGMA_TOKEN ,FIGMA_FILE_KEY,URL
+Add FIGMA_TOKEN ,FIGMA_FILE_KEY,BASE_URL
 
 ```Run a Visual Test
 npx playwright test
